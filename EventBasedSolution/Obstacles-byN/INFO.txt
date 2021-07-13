@@ -1,0 +1,35 @@
+Code for an event based solution of front propagation with a random distribution of diamond shape obstacles (zones of no propagation)
+
+
+Used in the publication "The collective effect of finite-sized inhomogeneities on the spatial spread of populations in two dimensions" by Wolfram Moebius, Francesca Tesser, Kim M. J. Alards, Roberto Benzi, David R. Nelson, and Federico Toschi (Fig4B)
+
+input parameter file structure (param.in):
+
+nread (int)
+vf (float)
+nsim (int)
+tend, dt (float,float)
+tdump (int)
+lenx,leny (float,float)
+Nin,robs (int,float)
+
+Parameter explanation:
+nread=1 the code read the positions of the obstacles from a list of file with name "position_highdif_areas.me.*.isample.0.dat" stored inside the folder Obs_pos
+nread=0 the code generates obstacles at random positions
+vf is the front velocity outside the obstacles (front velocity inside obstacles is 0)
+nsim is the number of realizations with different obstacle distribution
+tend=total time
+dt=time step.
+tdump: dump the output data every tdump time steps
+lenx: size of the domain along x
+leny: size of the domain along y
+Nin: number of obstacles
+robs: radius of the obstacle (in the case of diamond it is the half diagonal)
+
+
+available flags in the Makefile:
+MPI to run with mpi. In this case 1 realization per processor
+DEBUG for debug mode compilation
+
+compile with 'make'
+run the code with 'mpirun event_model' or './event_model'

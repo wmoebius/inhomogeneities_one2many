@@ -1,0 +1,42 @@
+Code for an event based solution of front propagation with a random distribution of circular hotspots (zones of higher velocity propagation)
+
+
+Used in the publication "The collective effect of finite-sized inhomogeneities on the spatial spread of populations in two dimensions" by Wolfram Moebius, Francesca Tesser, Kim M. J. Alards, Roberto Benzi, David R. Nelson, and Federico Toschi (Fig4D)
+
+input parameter file structure (param.in):
+
+nread (int)
+etas,edump,etam (float, float, float)
+vmean (float)
+nsim (int)
+tend, dt (float,float)
+tdump (int)
+lenx,leny (float,float)
+Nhs,robs (int,float)
+
+Parameter explanation:
+nread=1 the code read the positions of the hotspots from a list of file with name "position_highdif_areas.me.*.isample.0.dat"> In this case the velocity outside and inside the hotposts are set to be:
+  vf = 1.4405; (background)
+  vr = 3.5; (hotspot) 
+nread=0 the code generates hotspots at random positions. In this case the velocity outsdie and inside the hotspots are set to vmean-eta and vmean+eta.
+etas,edump,etam: # 3 parameters to define the list of eta values in the code in the for loop for(eta=etas;eta<etam;eta=eta+edump)
+
+.  
+vmean: arithmetic mean of the 2 velocities
+nsim is the number of realizations with different hotspots distribution. The simulations are run one after the other, use mpi to run them parallel. nsim simulations * processor 
+tend=total time
+dt=time step.
+tdump: dump the output data every tdump time steps
+lenx: size of the domain along x
+leny: size of the domain along y
+Nhs: number of hotspots
+robs: radius of the hotspot
+
+
+available flags in the Makefile:
+MPI to run with mpi. In this case 1 realization per processor
+DEBUG for debug mode compilation
+FISHER_ZERO is the case of background velocity =0
+
+compile with 'make'
+run the code with 'mpirun event_model' or './event_model' for a single processor (MPI OFF)
