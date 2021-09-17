@@ -2,7 +2,7 @@
 
 Manuscript published in *Journal of The Royal Society Interface* in 2021
 by Wolfram Möbius, Francesca Tesser, Kim M. J. Alards, Roberto Benzi, David R. Nelson, and Federico Toschi.
-Corresponding preprint can be found on [arXiv](https://arxiv.org/abs/1910.05332).
+[Corresponding preprint](https://arxiv.org/abs/1910.05332) can be found on arXiv.
 
 ### Individual-based simulation
 
